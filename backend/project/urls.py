@@ -8,16 +8,16 @@ from drf_yasg import openapi
 from project import settings
 
 schema_view = get_schema_view(
-   openapi.Info(
-      title="Ecommerce API",
-      default_version='v1',
-      description="Batch 23 example",
-      terms_of_service="https://www.google.com/policies/terms/",
-      contact=openapi.Contact(email="learn@propulsionacademy.com"),
-      license=openapi.License(name="BSD License"),
-   ),
-   public=True, # Set to False restrict access to protected endpoints
-   # permission_classes=(permissions.AllowAny,), # Permissions for docs access
+    openapi.Info(
+        title="Ecommerce API",
+        default_version='v1',
+        description="Batch 23 example",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="learn@propulsionacademy.com"),
+        license=openapi.License(name="BSD License"),
+    ),
+    public=True,  # Set to False restrict access to protected endpoints
+    # permission_classes=(permissions.AllowAny,), # Permissions for docs access
 )
 
 urlpatterns = [

@@ -1,7 +1,4 @@
-from django.db.models.signals import pre_delete
-from django.dispatch import receiver
 from rest_framework import serializers
-from rest_framework.exceptions import ValidationError
 
 from item.models import Item
 

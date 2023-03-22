@@ -1,5 +1,4 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework.permissions import AllowAny
 
 from item.models import Item
 from item.permissions import IsStaffOrReadOnly, IsSuperuserOrReadOnly
@@ -17,6 +16,7 @@ class ListCreateItemView(ListCreateAPIView):
     queryset = Item.objects.all()
     # permission_classes = [AllowAny]
     permission_classes = [IsStaffOrReadOnly]
+
     # permission_classes = [IsAuthenticated, IsStaffOrReadOnly] # AND
     # permission_classes = [IsAuthenticated | IsStaffOrReadOnly] # OR
     # permission_classes = [~IsAuthenticated] # NOT

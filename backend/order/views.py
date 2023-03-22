@@ -30,6 +30,7 @@ class ListCreateOrderView(ListCreateAPIView):
         for item_data in items_data:
             item = get_object_or_404(Item, id=item_data['id'])
             ordered_item = OrderedItems.objects.create(order=order, item=item, quantity=item_data['quantity'])
+            ordered_item
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
