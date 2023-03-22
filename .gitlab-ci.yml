@@ -3,6 +3,7 @@ stages:
   - build
   - lint
   - push
+  - cleanup
 
 before_script:
   - docker login -u "gitlab-ci-token" -p "$CI_BUILD_TOKEN" "$CI_REGISTRY"
@@ -38,3 +39,10 @@ push latest:
   script:
     - docker tag "$CI_PIPELINE_ID":"$CI_COMMIT_REF_NAME" "$CI_REGISTRY_IMAGE":latest
     - docker push "$CI_REGISTRY_IMAGE":latest
+
+cleanup:
+  stage: cleanup
+  when: always
+  script:
+    - docker rmi -f "$CI_PIPELINE_ID":"$CI_COMMIT_REF_NAME"
+    - docker compose -p "$CI_PIPELINE_ID" -f docker-compose.ci.yml down --remove-orphans
