@@ -9,4 +9,4 @@ dependencies:
       - djangorestframework_simplejwt==5.2.2
       - drf-yasg==1.21.5
       - pillow==9.4.0
-      - flake8
+      - flake8==6.0.0
