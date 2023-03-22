@@ -2,7 +2,7 @@ version: '3'
 
 services:
   backend:
-    image: week7day2-batch-23:latest
+    image: registry.gitlab.propulsion-home.ch/adrien-la-boudi/week7day3-batch23:latest
     ports:
       - '8001:8000' # Opens port 8000 on the container's side, sends data to port 8001 on local machine side
     volumes:
