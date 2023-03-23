@@ -128,6 +128,9 @@ STATIC_URL = "static-files/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static-files") if DEBUG else '/static-files/'
 print('static root', STATIC_ROOT)
 
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 MEDIA_URL = "media-files/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media-files") if DEBUG else '/media-files/'
 print('media root', MEDIA_ROOT)
