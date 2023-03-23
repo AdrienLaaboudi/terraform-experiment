@@ -3,14 +3,13 @@ version: '3'
 services:
   backend:
     image: registry.gitlab.propulsion-home.ch/adrien-la-boudi/week7day3-batch23:master
-    ports:
-      - '8001:8000' # Opens port 8000 on the container's side, sends data to port 8001 on local machine side
     env_file:
       - ./envs/prod.env
     command: "sh /scripts/prod.sh"
     volumes:
       - static_files:/static-files
       - media_files:/media-files
+      - build:/frontend/build
     depends_on:
       - postgres
 
@@ -29,8 +28,10 @@ services:
       - ./nginx:/etc/nginx/conf.d/
       - static_files:/static-files
       - media_files:/media-files
+      - build:/build
 
 volumes:
   postgres_db:
   static_files:
   media_files:
+  build:

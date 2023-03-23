@@ -21,16 +21,16 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("backend/admin/", admin.site.urls),
 
-    path("items/", include('item.urls')),
-    path("orders/", include('order.urls')),
+    path("backend/items/", include('item.urls')),
+    path("backend/orders/", include('order.urls')),
 
-    path('token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-    path('token/verify/', jwt_views.TokenVerifyView.as_view(), name='token_refresh'),
+    path('backend/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('backend/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('backend/token/verify/', jwt_views.TokenVerifyView.as_view(), name='token_refresh'),
 
-    path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('backend/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
 
 if settings.DEBUG:
