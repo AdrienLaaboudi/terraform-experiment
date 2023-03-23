@@ -9,7 +9,7 @@ services:
       - ./backend:/backend
     env_file:
       - ./envs/dev.env
-    command: 'tail -f /dev/null' #To keep running our container (for now)
+    command: "sh /scripts/dev.sh"
     depends_on:
       - postgres
 
