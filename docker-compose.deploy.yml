@@ -16,7 +16,14 @@ services:
     env_file:
       - ./envs/prod.env
     volumes:
-      - postgres_db:/var/lib/postgresql/data
+      - postgres_db:/var/lib/postgresql/data.
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx:/etc/nginx/conf.d/
 
 volumes:
   postgres_db:
