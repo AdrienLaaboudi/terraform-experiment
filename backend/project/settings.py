@@ -125,11 +125,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static-files/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static-files")
+STATIC_ROOT = os.path.join(BASE_DIR, "static-files") if DEBUG else '/static-files/'
 print('static root', STATIC_ROOT)
 
 MEDIA_URL = "media-files/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media-files")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media-files") if DEBUG else '/media-files/'
 print('media root', MEDIA_ROOT)
 
 # Default primary key field type

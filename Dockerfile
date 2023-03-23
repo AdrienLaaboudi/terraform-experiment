@@ -3,6 +3,7 @@ ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
 RUN mkdir -p /backend
 RUN mkdir -p /scripts
+RUN mkdir -p /static-files
 
 COPY ./backend /backend
 COPY ./scripts /scripts
