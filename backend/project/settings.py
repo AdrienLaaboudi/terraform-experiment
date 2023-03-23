@@ -26,6 +26,8 @@ SECRET_KEY = "django-insecure-+kw^h@mi31gxbln*4)7z*m)cvzv(&s5-2gbx&#41#bd&)8-_kk
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ["https://batch-23-deployment.propulsion-learn.ch", 'http://127.0.0.1']
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -46,9 +48,11 @@ INSTALLED_APPS = [
     # 3rd party
     "rest_framework",
     "drf_yasg",
+    "corsheaders"
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
