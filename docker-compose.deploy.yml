@@ -6,7 +6,7 @@ services:
     ports:
       - '8001:8000' # Opens port 8000 on the container's side, sends data to port 8001 on local machine side
     env_file:
-      - ./envs/dev.env
+      - ./envs/prod.env
     command: 'tail -f /dev/null' #To keep running our container (for now)
     depends_on:
       - postgres
@@ -14,7 +14,7 @@ services:
   postgres:
     image: postgres:latest
     env_file:
-      - ./envs/dev.env
+      - ./envs/prod.env
     volumes:
       - postgres_db:/var/lib/postgresql/data
 
