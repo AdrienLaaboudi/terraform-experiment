@@ -24,11 +24,13 @@ services:
     image: nginx:latest
     ports:
       - '80:80'
+      - '443:433'
     volumes:
       - ./nginx:/etc/nginx/conf.d/
       - static_files:/static-files
       - media_files:/media-files
       - build:/build
+      - /etc/letsencrypt:/etc/letsencrypt
 
 volumes:
   postgres_db:
