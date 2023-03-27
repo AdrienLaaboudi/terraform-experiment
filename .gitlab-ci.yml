@@ -45,7 +45,7 @@ cleanup:
   stage: cleanup
   when: always
   script:
-    - docker images --quiet --filter "dangling=true" | xargs --no-run-if-empty docker rmi
+    - docker images --quiet --filter "dangling=true" | while read image_id; do if docker ps -a --format '{{.Image}}' | grep -q "^${image_id}\$"; then echo "Image $image_id is in use, skipping"; else docker rmi -f $image_id; fi; done
     - docker rmi -f "$CI_PIPELINE_ID":"$CI_COMMIT_REF_NAME"
     - docker compose -p "$CI_PIPELINE_ID" -f docker-compose.ci.yml down --remove-orphans
 
