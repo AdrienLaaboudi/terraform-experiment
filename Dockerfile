@@ -31,7 +31,7 @@ WORKDIR /backend
 
 FROM node-conda AS final
 
-COPY --from=utils /opt/conda/envs/DRF-batch-23 /opt/conda/envs/DRF-batch-23
+COPY --from=node-conda /opt/conda/envs/DRF-batch-23 /opt/conda/envs/DRF-batch-23
 
 COPY ./backend /backend
 WORKDIR /backend
