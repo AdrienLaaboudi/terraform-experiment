@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3 AS utils
+FROM continuumio/miniconda3 AS node-conda
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
 RUN apt-get update
@@ -18,7 +18,7 @@ RUN /opt/conda/bin/conda env create -f /backend/requirements.yml
 COPY ./scripts /scripts
 RUN chmod +x ./scripts
 
-FROM utils AS frontend
+FROM node-conda AS frontend
 
 WORKDIR /frontend
 COPY ./frontend/package.json /frontend/
@@ -29,9 +29,9 @@ RUN npm run build
 
 WORKDIR /backend
 
-FROM frontend AS final
+FROM node-conda AS final
 
-COPY --from=utils /opt/conda/envs/DRF-batch-23 /opt/conda/envs/DRF-batch-23
+COPY --from=node-conda /opt/conda/envs/DRF-batch-23 /opt/conda/envs/DRF-batch-23
 
 COPY ./backend /backend
 WORKDIR /backend
