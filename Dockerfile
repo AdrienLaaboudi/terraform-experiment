@@ -12,11 +12,11 @@ RUN mkdir -p /static-files
 RUN mkdir -p /media-files
 RUN mkdir -p /frontend
 
-COPY ./backend/requirements.yml /backend/requirements.yml
-RUN /opt/conda/bin/conda env create -f /backend/requirements.yml
-
 COPY ./scripts /scripts
 RUN chmod +x ./scripts
+
+COPY ./backend/requirements.yml /backend/requirements.yml
+RUN /opt/conda/bin/conda env create -f /backend/requirements.yml
 
 FROM node-conda AS frontend
 
