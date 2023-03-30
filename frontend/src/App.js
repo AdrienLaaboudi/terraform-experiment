@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Fix the pipeline testprod
+          Fix the pipeline testprod2
         </a>
       </header>
     </div>
