@@ -40,4 +40,4 @@ ENV PATH /opt/conda/envs/DRF-batch-23/bin:$PATH
 ENV PYTHONDONTWRITEBYTECODE=1
 RUN echo "source activate DRF-batch-23">~/.bashrc
 
-COPY --from=frontend /frontend/build /frontend
+COPY --from=frontend /frontend/build /frontend/build
