@@ -1,6 +1,3 @@
-#Multi-staged Dockerfile
-
-#Installing node and building the conda environment
 FROM continuumio/miniconda3 AS node-conda
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
@@ -21,7 +18,6 @@ RUN chmod +x ./scripts
 COPY ./backend/requirements.yml /backend/requirements.yml
 RUN /opt/conda/bin/conda env create -f /backend/requirements.yml
 
-#Building the frontend
 FROM node-conda AS frontend
 
 WORKDIR /frontend
