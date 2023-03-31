@@ -27,7 +27,7 @@ RUN npm install
 COPY ./frontend /frontend
 RUN npm run build
 
-Building the backend, activating the conda environment and
+
 FROM node-conda AS final
 
 COPY --from=node-conda /opt/conda/envs/DRF-batch-23 /opt/conda/envs/DRF-batch-23
