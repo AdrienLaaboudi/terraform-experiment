@@ -49,7 +49,7 @@ cleanup:
 #      Send all the dangling image through a conditional to check if containers are still attached to it.
 #      If true, bypasses the removal, if false, calls docker rmi on the image ID
     - docker images --quiet --filter "dangling=true" | while read image_id; do if docker ps -a --format '{{.Image}}' | grep -q "^${image_id}\$"; then echo "Image $image_id is in use, skipping"; else docker rmi -f $image_id; fi; done
-    - docker builder prune -f
+#    - docker builder prune -f
     - docker compose -p "$CI_PIPELINE_ID" -f docker-compose.ci.yml down --remove-orphans
 
 deploy:
