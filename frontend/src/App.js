@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Fix the pipeline testcache2
+          Fix the pipeline
         </a>
       </header>
     </div>
