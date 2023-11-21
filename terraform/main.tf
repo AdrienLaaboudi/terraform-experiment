@@ -2,10 +2,10 @@ provider "aws" {
   region = "us-east-1"
 }
 
-provider "cloudflare" {
-  email     = "adrien.laaboudi@gmail.com"
-  api_token = "43b31eb1fcb77a7e4e526f3c77b9839448211"
-}
+#provider "cloudflare" {
+#  email     = "adrien.laaboudi@gmail.com"
+#  api_token = "43b31eb1fcb77a7e4e526f3c77b9839448211"
+#}
 
 resource "aws_instance" "packer-docker-aws" {
   ami           = "ami-0ae294107ce379ebe"
