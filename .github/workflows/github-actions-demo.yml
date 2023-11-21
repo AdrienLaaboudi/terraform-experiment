@@ -11,7 +11,12 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
-      - run: docker compose -f docker-compose.deploy.yml pull
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+        run: docker compose -f docker-compose.deploy.yml pull
       - run: docker compose -f docker-compose.deploy.yml down --remove-orphans
       - run: docker volume ls -q -f name=build | xargs -r docker volume rm
       - run: docker compose -f docker-compose.deploy.yml up -d
