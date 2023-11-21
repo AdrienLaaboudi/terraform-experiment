@@ -8,7 +8,7 @@ provider "aws" {
 #}
 
 resource "aws_instance" "packer-docker-aws" {
-  ami           = "ami-0ae294107ce379ebe"
+  ami           = "ami-0fb8ec98d27f0508e"
   instance_type = "t2.small"
   key_name = "deployer-key"
   tags = {
