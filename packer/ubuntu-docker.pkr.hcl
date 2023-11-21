@@ -8,9 +8,10 @@ packer {
 }
 
 source "amazon-ebs" "ubuntu" {
-  ami_name      = "packer-docker-aws"
-  instance_type = "t2.small"
-  region        = "us-east-1"
+  ami_name         = "packer-docker-aws"
+  force_deregister = "true"
+  instance_type    = "t2.small"
+  region           = "us-east-1"
   source_ami_filter {
     filters = {
       name                = "ubuntu/images/*ubuntu-jammy-22.04-amd64-server-*"
@@ -36,9 +37,9 @@ build {
       "sudo apt-get update",
       "sudo apt-get install -y docker-ce",
       "sudo usermod -aG docker ubuntu",
-      "curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash",
-      "sudo apt-get install gitlab-runner",
-      "sudo gpasswd -a gitlab-runner docker"
+      #      "curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash",
+      #      "sudo apt-get install gitlab-runner",
+      #      "sudo gpasswd -a gitlab-runner docker"
     ]
   }
 }
