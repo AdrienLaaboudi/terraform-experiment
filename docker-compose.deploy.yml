@@ -2,7 +2,7 @@ version: '3'
 
 services:
   backend:
-    image: registry.gitlab.propulsion-home.ch/adrien-la-boudi/week7day3-batch23:master
+    image: test-github-actions:latest
     env_file:
       - ./envs/prod.env
     command: "sh /scripts/prod.sh"
