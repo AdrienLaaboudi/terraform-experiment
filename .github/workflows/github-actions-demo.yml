@@ -17,6 +17,14 @@ jobs:
       - run: echo "${GITHUB_SHA}:${GITHUB_REF_NAME}"
       - run: docker compose -p "${{ github.sha }}" -f docker-compose.ci.yml run backend flake8 .
 
+  cleanup:
+    runs-on: self-hosted
+    needs: [build, lint]
+    steps:
+      - if: ${{ always() }}
+      - run: docker rmi -f "${GITHUB_SHA}:${GITHUB_REF_NAME}"
+      - run: docker compose -p "$GITHUB_SHA" -f docker-compose.ci.yml down --remove-orphans
+
   deploy:
     runs-on: self-hosted
     needs: lint
