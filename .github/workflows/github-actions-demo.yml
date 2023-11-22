@@ -2,6 +2,11 @@ name: Deployment
 run-name: ${{ github.sha }}
 on: [ push ]
 jobs:
+  pull:
+    runs-on: self-hosted
+    steps:
+      - run: docker pull ghcr.io/${LC_REPOSITORY}:latest
+
   build:
     runs-on: self-hosted
     steps:
