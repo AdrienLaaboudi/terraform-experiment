@@ -27,7 +27,10 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo $(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
+      - run: echo "LC_REPOSITORY=${UC_REPOSITORY,,}" >> ${GITHUB_ENV}
+        env:
+          UC_REPOSITORY: '${{ github.repository }}'
+      - run: echo ${ env.LC_REPOSITORY }
       - run: docker tag "${GITHUB_SHA}:${GITHUB_REF_NAME}" ghcr.io/adrienlaaboudi/terraform-experiment:latest
       - run: docker push ghcr.io/adrienlaaboudi/terraform-experiment:latest
 
