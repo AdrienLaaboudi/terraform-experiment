@@ -5,7 +5,6 @@ import registration_profile.models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = []

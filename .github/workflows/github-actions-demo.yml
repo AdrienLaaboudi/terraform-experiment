@@ -1,6 +1,6 @@
 name: Deployment
 run-name: ${{ github.sha }}
-on: [push]
+on: [ push ]
 jobs:
   build:
     runs-on: self-hosted
@@ -17,6 +17,14 @@ jobs:
       - run: echo "${GITHUB_SHA}:${GITHUB_REF_NAME}"
       - run: docker compose -p "${{ github.sha }}" -f docker-compose.ci.yml run backend flake8 .
 
+  cleanup:
+    runs-on: self-hosted
+    needs: [ build, lint ]
+    if: ${{ always() }}
+    steps:
+      - run: docker rmi -f "${GITHUB_SHA}:${GITHUB_REF_NAME}"
+      - run: docker compose -p "$GITHUB_SHA" -f docker-compose.ci.yml down --remove-orphans
+
   deploy:
     runs-on: self-hosted
     needs: lint
@@ -26,7 +34,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-#      - run: docker compose -f docker-compose.deploy.yml pull
+      #      - run: docker compose -f docker-compose.deploy.yml pull
       - run: docker compose -f docker-compose.deploy.yml down --remove-orphans
       - run: docker volume ls -q -f name=build | xargs -r docker volume rm
       - run: docker compose -f docker-compose.deploy.yml up -d
