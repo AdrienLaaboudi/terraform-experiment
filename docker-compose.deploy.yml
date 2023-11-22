@@ -2,7 +2,7 @@ version: '3'
 
 services:
   backend:
-    image: test-github-actions:latest
+    image: ghcr.io/adrienlaaboudi/terraform-experiment:main
     env_file:
       - ./envs/prod.env
     command: "sh /scripts/prod.sh"
