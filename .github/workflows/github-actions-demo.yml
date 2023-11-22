@@ -17,6 +17,11 @@ jobs:
       - run: echo "${GITHUB_SHA}:${GITHUB_REF_NAME}"
       - run: docker compose -p "${{ github.sha }}" -f docker-compose.ci.yml run backend flake8 .
 
+  push-latest:
+    runs-on: self-hosted
+    steps:
+      - run: docker tag "${GITHUB_SHA}:${GITHUB_REF_NAME}" ghcr.io${{ github.repository }}:latest
+
   cleanup:
     runs-on: self-hosted
     needs: [ build, lint ]
