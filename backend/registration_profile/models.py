@@ -20,7 +20,6 @@ class RegistrationProfile(models.Model):
     def __str__(self):
         return f'{self.id} - Reg profile for {self.user.username}'
 
-
 # related name: key to access the instance from the related object
 # first_user = User.objects.first()
 # first_user.reg_profile

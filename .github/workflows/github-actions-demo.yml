@@ -22,6 +22,7 @@ jobs:
     needs: lint
     steps:
       - run: docker tag "${GITHUB_SHA}:${GITHUB_REF_NAME}" ghcr.io/adrienlaaboudi/terraform-experiment:latest
+      - run: docker push ghcr.io/adrienlaaboudi/terraform-experiment:latest
 
   cleanup:
     runs-on: self-hosted
