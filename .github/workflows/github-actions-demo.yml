@@ -30,9 +30,8 @@ jobs:
       - run: echo "LC_REPOSITORY=${UC_REPOSITORY,,}" >> ${GITHUB_ENV}
         env:
           UC_REPOSITORY: '${{ github.repository }}'
-      - run: echo $LC_REPOSITORY
       - run: docker tag "${GITHUB_SHA}:${GITHUB_REF_NAME}" ghcr.io/adrienlaaboudi/terraform-experiment:latest
-      - run: docker push ghcr.io/adrienlaaboudi/terraform-experiment:latest
+      - run: docker push ${LC_REPOSITORY}:latest
 
   cleanup:
     runs-on: self-hosted
