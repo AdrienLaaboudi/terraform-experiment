@@ -1,4 +1,4 @@
-name: Deployment
+name: Main
 run-name: ${{ github.sha }}
 on:
   push:
