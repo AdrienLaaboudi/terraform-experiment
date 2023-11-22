@@ -6,7 +6,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
-      - run: docker build -t ${{ github.job }} .
+      - run: docker build -t ${{ github.sha }}:${{ github.ref_name }} .
 
   deploy:
     runs-on: self-hosted
