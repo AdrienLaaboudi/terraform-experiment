@@ -20,8 +20,8 @@ jobs:
   cleanup:
     runs-on: self-hosted
     needs: [build, lint]
+    if: ${{ always() }}
     steps:
-      - if: ${{ always() }}
       - run: docker rmi -f "${GITHUB_SHA}:${GITHUB_REF_NAME}"
       - run: docker compose -p "$GITHUB_SHA" -f docker-compose.ci.yml down --remove-orphans
 
