@@ -1,4 +1,4 @@
-name: Development checks
+name: Development
 run-name: ${{ github.sha }}
 on: push
 jobs:
