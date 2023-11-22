@@ -1,6 +1,6 @@
 name: Deployment
 run-name: ${{ github.sha }}
-on: [ push ]
+on: push
 jobs:
   pull:
     runs-on: self-hosted
