@@ -11,9 +11,10 @@ jobs:
   lint:
     runs-on: self-hosted
     steps:
-      - run: export GITHUB_SHA=${{ github.sha }}
-      - run: export GITHUB_REF_NAME=${{ github.ref_name }}
-      - run: docker compose -p "$GITHUB_SHA" -f docker-compose.ci.yml run backend flake8 .
+#      - run: export GITHUB_SHA=${{ github.sha }}
+#      - run: export GITHUB_REF_NAME=${{ github.ref_name }}
+      - run: echo "${{ github.sha }}:${{ github.ref_name }}"
+      - run: docker compose -p "${{ github.sha }}" -f docker-compose.ci.yml run backend flake8 .
 
   deploy:
     runs-on: self-hosted
